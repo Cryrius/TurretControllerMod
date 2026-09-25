@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "turretcontroller",
+    "name": "Turret Controller",
+    "description": "A standalone, reflection-based turret controller for Minecraft 1.7.10.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/Cryrius/TurretControllerMod",
+    "updateUrl": "",
+    "authorList": ["Cryrius"],
+    "credits": "Designed to integrate with HBM's turrets without a hard dependency.",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
