@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://maven.ntmr.dev/proxy/' }
+        mavenCentral()
+    }
+    dependencies {
+        // ForgeGradle supplies Minecraft and Forge to the compile configuration.
+        // HBM is deliberately not a build dependency; all HBM integration is reflective.
+        classpath 'com.anatawa12.forge:ForgeGradle:1.2-1.0.+'
+    }
+}
+
+apply plugin: 'forge'
+
+version = project.mod_version
+group = 'com.cryrius.turretcontroller'
+archivesBaseName = 'TurretControllerMod'
+
+sourceCompatibility = targetCompatibility = '1.7'
+
+minecraft {
+    version = '1.7.10-10.13.4.1614-1.7.10'
+    runDir = 'run'
+}
+
+repositories {
+    // Kept intentionally empty: this project has no mod or library dependency.
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand(version: project.version, mcversion: project.minecraft.version)
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Turret Controller',
+                   'Implementation-Version': project.version
+    }
+}
